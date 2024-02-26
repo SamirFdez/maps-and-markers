@@ -1,12 +1,12 @@
 import { Navbar } from "./components/navbar/Navbar";
-import { MapContent } from "./components/maps/MapContent";
+import { MapControl } from "./components/maps/MapControl";
 import "./App.css";
 
 function App() {
   return (
     <>
       <Navbar />
-      <MapContent />
+      <MapControl />
     </>
   );
 }

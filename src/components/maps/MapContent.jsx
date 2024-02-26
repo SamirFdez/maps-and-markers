@@ -15,7 +15,6 @@ export const MapContent = ({ puntosCardinales }) => {
     }
   }, [map]);
 
-  // Actualizar marcadores
   useEffect(() => {
     clusterer.current?.clearMarkers();
     clusterer.current?.addMarkers(Object.values(markers));
@@ -38,29 +37,27 @@ export const MapContent = ({ puntosCardinales }) => {
 
   return (
     <>
-      <>
-        {puntosCardinales.map((puntos) => (
-          <AdvancedMarker
-            position={puntos}
-            key={puntos.id}
-            ref={(marker) => setMarkerRef(marker, puntos.id)}
-          >
-            <div
-              style={{
-                width: 20,
-                height: 20,
-                position: "absolute",
-                top: 0,
-                left: 0,
-                background: "#FA64FF",
-                border: "2px solid #FA64FF",
-                borderRadius: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            ></div>
-          </AdvancedMarker>
-        ))}
-      </>
+      {puntosCardinales.map((puntos) => (
+        <AdvancedMarker
+          position={puntos}
+          key={puntos.id}
+          ref={(marker) => setMarkerRef(marker, puntos.id)}
+        >
+          <div
+            style={{
+              width: 20,
+              height: 20,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              background: "#FA64FF",
+              border: "2px solid #FA64FF",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </AdvancedMarker>
+      ))}
     </>
   );
 };

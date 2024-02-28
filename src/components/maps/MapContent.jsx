@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useMap, AdvancedMarker } from "@vis.gl/react-google-maps";
-import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import { MarkerClusterer, DefaultRenderer } from "@googlemaps/markerclusterer";
+import { MarkerUtils } from "@googlemaps/markerclusterer";
 
 export const MapContent = ({ puntosCardinales }) => {
   const map = useMap();
@@ -11,7 +12,7 @@ export const MapContent = ({ puntosCardinales }) => {
   useEffect(() => {
     if (!map) return;
     if (!clusterer.current) {
-      clusterer.current = new MarkerClusterer({ map });
+      clusterer.current = new MarkerClusterer({ map, DefaultRenderer });
     }
   }, [map]);
 

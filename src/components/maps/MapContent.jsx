@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useMap, AdvancedMarker } from "@vis.gl/react-google-maps";
 import { MarkerClusterer, DefaultRenderer } from "@googlemaps/markerclusterer";
-import { MarkerUtils } from "@googlemaps/markerclusterer";
 
-export const MapContent = ({ puntosCardinales }) => {
+export const MapContent = ({ cardinalPoints }) => {
   const map = useMap();
   const [markers, setMarkers] = useState({});
   const clusterer = useRef(null);
-  const totalMarkers = 12;
 
   useEffect(() => {
     if (!map) return;
@@ -38,11 +36,11 @@ export const MapContent = ({ puntosCardinales }) => {
 
   return (
     <>
-      {puntosCardinales.map((puntos) => (
+      {cardinalPoints?.map((puntos) => (
         <AdvancedMarker
-          position={puntos}
-          key={puntos.id}
-          ref={(marker) => setMarkerRef(marker, puntos.id)}
+          position={{ lat: puntos.Lat, lng: puntos.Lng }}
+          key={puntos.Descripcion}
+          ref={(marker) => setMarkerRef(marker, puntos.Id)}
         >
           <div
             style={{

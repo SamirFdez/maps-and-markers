@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useMap, AdvancedMarker } from "@vis.gl/react-google-maps";
+import { useMap, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
 import { MarkerClusterer, DefaultRenderer } from "@googlemaps/markerclusterer";
 
 export const MapContent = ({ cardinalPoints }) => {
@@ -36,10 +36,23 @@ export const MapContent = ({ cardinalPoints }) => {
 
   return (
     <>
-      {cardinalPoints?.map((puntos) => (
+      {/* {cardinalPoints?.map((puntos) => (
         <AdvancedMarker
           position={{ lat: puntos.Lat, lng: puntos.Lng }}
-          key={puntos.Descripcion}
+          title={puntos.Descripcion}
+        >
+          <Pin
+            background={"#22ccff"}
+            borderColor={"#1e89a1"}
+            glyphColor={"#0f677a"}
+          ></Pin>
+        </AdvancedMarker>
+      ))} */}
+
+      {cardinalPoints?.map((puntos, index) => (
+        <AdvancedMarker
+          position={{ lat: puntos.Lat, lng: puntos.Lng }}
+          key={`klk-punto-${index}`}
           ref={(marker) => setMarkerRef(marker, puntos.Id)}
         >
           <div

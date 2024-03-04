@@ -46,7 +46,7 @@ export const MapControl = () => {
 
   const getCardinalPointsLoot = async () => {
     try {
-      if (currentPage < totalPages) {
+      if (currentPage < 2) {
         const response = await axios.post(
           baseUrl + deviceId + appId + procId,
           { Pagina: currentPage + 1 }, // Enviamos la siguiente página
@@ -75,9 +75,6 @@ export const MapControl = () => {
   //     getCardinalPointsLoot();
   //   }, 1000);
   // }, [currentPage, totalPages]);
-
-
-
 
   return (
     <>

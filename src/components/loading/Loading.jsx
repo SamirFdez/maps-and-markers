@@ -4,20 +4,18 @@ export const Loading = () => {
   return (
     <>
       <div className="h-screen">
-        <div className="flex justify-center items-center h-full">
+        <div className="flex flex-col justify-center items-center h-full">
           <span className="loading loading-bars loading-lg"></span>
-          {/* <div className="flex justify-center gap-1 my-1 w-full">
-  <kbd className="kbd">q</kbd>
-  <kbd className="kbd">w</kbd>
-  <kbd className="kbd">e</kbd>
-  <kbd className="kbd">r</kbd>
-  <kbd className="kbd">t</kbd>
-  <kbd className="kbd">y</kbd>
-  <kbd className="kbd">u</kbd>
-  <kbd className="kbd">i</kbd>
-  <kbd className="kbd">o</kbd>
-  <kbd className="kbd">p</kbd>
-</div>  */}
+          {/* <div className="flex justify-center gap-1 mt-4 w-full">
+            <kbd className="kbd kbd-sm">C</kbd>
+            <kbd className="kbd kbd-sm">a</kbd>
+            <kbd className="kbd kbd-sm">r</kbd>
+            <kbd className="kbd kbd-sm">g</kbd>
+            <kbd className="kbd kbd-sm">a</kbd>
+            <kbd className="kbd kbd-sm">n</kbd>
+            <kbd className="kbd kbd-sm">d</kbd>
+            <kbd className="kbd kbd-sm">o</kbd>
+          </div> */}
         </div>
       </div>
     </>

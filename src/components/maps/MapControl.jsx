@@ -3,7 +3,6 @@ import axios from "axios";
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
 import { Loading } from "../loading/Loading";
 import { MapContent } from "./MapContent";
-Poly
 
 export const MapControl = () => {
   const baseUrl = import.meta.env.VITE_APP_BASEURL;

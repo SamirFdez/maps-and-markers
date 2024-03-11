@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useMap, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
 import { MarkerClusterer, DefaultRenderer } from "@googlemaps/markerclusterer";
 
+
 export const MapContent = ({ cardinalPoints }) => {
   const map = useMap();
   const [markers, setMarkers] = useState({});

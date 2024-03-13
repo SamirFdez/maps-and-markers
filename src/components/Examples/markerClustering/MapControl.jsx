@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
-import { Loading } from "../loading/Loading";
+import { Loading } from "../../loading/Loading";
 import { MapContent } from "./MapContent";
 
 export const MapControl = () => {
@@ -16,7 +16,6 @@ export const MapControl = () => {
   const defaultCenter = { lat: defaultLat, lng: defaultLng };
 
   const [cardinalPoints, setCardinalPoints] = useState([]);
-  const [totalPages, setTotalPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -43,37 +42,9 @@ export const MapControl = () => {
     }
   };
 
-  const getCardinalPointsLoot = async () => {
-    try {
-      if (currentPage < 2) {
-        const response = await axios.post(
-          baseUrl + deviceId + appId + procId,
-          { Pagina: currentPage + 1 }, // Enviamos la siguiente página
-          config
-        );
-        setCardinalPoints((prevData) => [
-          ...prevData,
-          ...response.data[0].Registros,
-        ]);
-        setCurrentPage(currentPage + 1); // Actualizamos la página actual
-      }
-    } catch (error) {
-      console.error(
-        "Error al obtener los puntos cardinales de la siguiente página",
-        error
-      );
-    }
-  };
-
   useEffect(() => {
     getCardinalPoints();
   }, []);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getCardinalPointsLoot();
-  //   }, 1000);
-  // }, [currentPage, totalPages]);
 
   return (
     <>

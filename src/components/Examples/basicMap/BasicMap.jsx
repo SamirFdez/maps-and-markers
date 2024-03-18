@@ -1,22 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { testPoints } from "../../../config/testPoints.config";
 import {
   APIProvider,
   Map,
-  Marker,
   AdvancedMarker,
   InfoWindow,
-  Pin,
 } from "@vis.gl/react-google-maps";
 
 export const BasicMap = () => {
   const apiKey = import.meta.env.VITE_APP_APIKEY;
   const defaultZoom = 12;
   const defaultPosition = { lat: 18.529930352593514, lng: -69.96623751238414 };
-  const [, set] = useState([]);
+  const [updateTestPoints, setUpdateTestPoints] = useState([]);
 
-  const prueba = (id) => {
-    alert(id);
+  useEffect(() => {
+    setUpdateTestPoints([...testPoints]);
+  }, []);
+
+  const openInfoView = (id) => {
+    const testPointTrue = updateTestPoints.map((info) =>
+      info.id === id ? { ...info, infoView: true } : { ...info }
+    );
+    setUpdateTestPoints(testPointTrue);
+
+    setTimeout(() => {
+      const testPointFalse = copyTestPoints.map((info) =>
+        info.id === id ? { ...info, infoView: false } : { ...info }
+      );
+      setUpdateTestPoints(testPointFalse);
+    }, 500);
   };
 
   return (
@@ -26,18 +38,18 @@ export const BasicMap = () => {
           <APIProvider apiKey={apiKey}>
             <Map
               mapId={"mapa01"}
-              defaultZoom={12}
+              defaultZoom={defaultZoom}
               defaultCenter={defaultPosition}
               gestureHandling={"greedy"}
               disableDefaultUI={true}
             >
-              {testPoints.map((points) => (
+              {updateTestPoints.map((points) => (
                 <>
                   <AdvancedMarker
                     position={points.coord}
                     title={points.place}
                     key={points.id}
-                    onClick={() => prueba(points.id)}
+                    onClick={() => openInfoView(points.id)}
                   >
                     <div
                       style={{

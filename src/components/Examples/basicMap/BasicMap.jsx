@@ -9,7 +9,7 @@ import {
 
 export const BasicMap = () => {
   const apiKey = import.meta.env.VITE_APP_APIKEY;
-  const defaultZoom = 12;
+  const defaultZoom = 11;
   const defaultPosition = { lat: 18.529930352593514, lng: -69.96623751238414 };
   const [updateTestPoints, setUpdateTestPoints] = useState([]);
 
@@ -19,7 +19,7 @@ export const BasicMap = () => {
 
   const openInfoView = (id) => {
     const testPointTrue = updateTestPoints.map((info) =>
-      info.id === id ? { ...info, infoView: true } : { ...info }
+      info.id === id ? { ...info, infoView: true } : info
     );
     setUpdateTestPoints(testPointTrue);
 

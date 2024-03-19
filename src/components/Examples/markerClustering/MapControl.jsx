@@ -55,7 +55,7 @@ export const MapControl = () => {
           <div className="w-[100em] h-[50em]">
             <APIProvider apiKey={apiKey}>
               <Map
-                mapId={"mapa01"}
+                mapId={"mapa001"}
                 defaultZoom={defaultZoom}
                 defaultCenter={defaultCenter}
                 gestureHandling={"greedy"}
